@@ -44,17 +44,34 @@ CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 extern "C" {
 #endif
 
-/**
- * A trie structure.
- */
 
-typedef struct _Trie Trie;
+
+typedef struct _TrieNode TrieNode;
 
 /**
  * Value stored in a @ref Trie.
  */
 
 typedef void *TrieValue;
+
+struct _TrieNode {
+	TrieValue data;
+	unsigned int use_count;
+	TrieNode *next[256];
+};
+
+struct _Trie {
+	TrieNode *root_node;
+};
+
+typedef void (* Trie_node_callback) (TrieNode * node);
+
+/**
+ * A trie structure.
+ */
+
+typedef struct _Trie Trie;
+
 
 /**
  * A null @ref TrieValue.
@@ -172,6 +189,14 @@ int trie_remove_binary(Trie *trie, unsigned char *key, int key_length);
  */
 
 unsigned int trie_num_entries(Trie *trie);
+
+
+/**
+ * Depth first traserve for a trie
+ * @author sangyafei
+ * @param trie        The trie
+*/
+void trie_dfs(Trie *trie, Trie_node_callback cb); 
 
 #ifdef __cplusplus
 }

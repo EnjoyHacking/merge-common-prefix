@@ -1,0 +1,40 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALGORITHM_TRIE_H	trie.h	41;"	d
+BIN	Makefile	/^BIN = merge_common_prefix$/;"	m
+NUM_TEST_VALUES	merge_common_prefix.c	8;"	d	file:
+TRIE_NULL	trie.h	63;"	d
+Trie	trie.h	/^typedef struct _Trie Trie;$/;"	t	typeref:struct:_Trie
+TrieNode	trie.c	/^typedef struct _TrieNode TrieNode;$/;"	t	typeref:struct:_TrieNode	file:
+TrieValue	trie.h	/^typedef void *TrieValue;$/;"	t
+_Trie	trie.c	/^struct _Trie {$/;"	s	file:
+_TrieNode	trie.c	/^struct _TrieNode {$/;"	s	file:
+data	trie.c	/^	TrieValue data;$/;"	m	struct:_TrieNode	file:
+generate_trie	merge_common_prefix.c	/^Trie *generate_trie(void)$/;"	f
+lookup_trie	merge_common_prefix.c	/^void lookup_trie(Trie * trie){$/;"	f
+main	merge_common_prefix.c	/^int main(int argc, char** argv) {$/;"	f
+next	trie.c	/^	TrieNode *next[256];$/;"	m	struct:_TrieNode	file:
+root_node	trie.c	/^	TrieNode *root_node;$/;"	m	struct:_Trie	file:
+test_array	merge_common_prefix.c	/^int test_array[NUM_TEST_VALUES];$/;"	v
+test_strings	merge_common_prefix.c	/^char test_strings[NUM_TEST_VALUES][10];$/;"	v
+trie_alg_dfs	trie.c	/^static void trie_alg_dfs(TrieNode * subtrie) {$/;"	f	file:
+trie_dfs	trie.c	/^void trie_dfs(Trie *trie) {$/;"	f
+trie_find_end	trie.c	/^static TrieNode *trie_find_end(Trie *trie, char *key)$/;"	f	file:
+trie_find_end_binary	trie.c	/^static TrieNode *trie_find_end_binary(Trie *trie, unsigned char *key,$/;"	f	file:
+trie_free	trie.c	/^void trie_free(Trie *trie)$/;"	f
+trie_free_list_pop	trie.c	/^static TrieNode *trie_free_list_pop(TrieNode **list)$/;"	f	file:
+trie_free_list_push	trie.c	/^static void trie_free_list_push(TrieNode **list, TrieNode *node)$/;"	f	file:
+trie_insert	trie.c	/^int trie_insert(Trie *trie, char *key, TrieValue value)$/;"	f
+trie_insert_binary	trie.c	/^int trie_insert_binary(Trie *trie, unsigned char *key, int key_length,$/;"	f
+trie_insert_rollback	trie.c	/^static void trie_insert_rollback(Trie *trie, unsigned char *key)$/;"	f	file:
+trie_lookup	trie.c	/^TrieValue trie_lookup(Trie *trie, char *key)$/;"	f
+trie_lookup_binary	trie.c	/^TrieValue trie_lookup_binary(Trie *trie, unsigned char *key, int key_length)$/;"	f
+trie_new	trie.c	/^Trie *trie_new(void)$/;"	f
+trie_num_entries	trie.c	/^unsigned int trie_num_entries(Trie *trie)$/;"	f
+trie_remove	trie.c	/^int trie_remove(Trie *trie, char *key)$/;"	f
+trie_remove_binary	trie.c	/^int trie_remove_binary(Trie *trie, unsigned char *key, int key_length)$/;"	f
+use_count	trie.c	/^	unsigned int use_count;$/;"	m	struct:_TrieNode	file:

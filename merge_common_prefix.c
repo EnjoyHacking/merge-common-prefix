@@ -62,10 +62,62 @@ void lookup_trie(Trie * trie){
 
 }
 
+
+static void int_callback(TrieNode *node) {
+
+	if(!node){
+		return;
+	}
+	if(!node->data){
+		return;
+	}
+	
+	int * value = (int *) node->data;	
+	
+	printf("%i \t", *value);
+
+	return;
+
+}
+
+static void str_callback(TrieNode *node) {
+
+	if(!node){
+		return;
+	}
+	if(!node->data){
+		return;
+	}
+	
+	char * value = (char *) node->data;	
+	
+	printf("%s\n", value);
+
+	return ;
+}
+
 int main(int argc, char** argv) {
+
+	/*
 	Trie *trie = generate_trie();
 
 	lookup_trie(trie);
+	*/
+
+	Trie * trie = trie_new();
+
+	trie_insert(trie, "aa", "aa");
+	trie_insert(trie, "ab", "ab");
+	trie_insert(trie, "ac", "ac");
+
+	trie_insert(trie, "ba", "ba");
+	trie_insert(trie, "bb", "bb");
+	trie_insert(trie, "bc", "bc");
+	
+
+	printf("-------------------------\n");
+
+	trie_dfs(trie, str_callback);
 
 	return 0;
 }

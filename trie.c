@@ -31,17 +31,6 @@ CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "alloc-testing.h"
 #endif
 
-typedef struct _TrieNode TrieNode;
-
-struct _TrieNode {
-	TrieValue data;
-	unsigned int use_count;
-	TrieNode *next[256];
-};
-
-struct _Trie {
-	TrieNode *root_node;
-};
 
 Trie *trie_new(void)
 {
@@ -72,6 +61,33 @@ static TrieNode *trie_free_list_pop(TrieNode **list)
 	*list = result->data;
 
 	return result;
+}
+/**
+ * @author sangyafei
+*/
+static void trie_alg_dfs(TrieNode * subtrie, Trie_node_callback cb) {
+	int i;
+	int *val;
+
+	if (!subtrie) {
+		return ;
+	}
+	for(i = 0; i < 256; ++i) {
+		if (subtrie->next[i] != NULL) {
+			trie_alg_dfs(subtrie->next[i], cb);
+		} 
+	}
+	
+	cb(subtrie);
+
+	/*
+	if(subtrie->data != NULL) {
+		val = (int *) subtrie->data;
+		printf("%i\t", *val);
+	}
+	*/
+	return ;
+
 }
 
 void trie_free(Trie *trie)
@@ -580,5 +596,21 @@ unsigned int trie_num_entries(Trie *trie)
 	} else {
 		return trie->root_node->use_count;
 	}
+}
+
+void trie_dfs(Trie *trie, Trie_node_callback cb) {
+	if (!trie) {
+		printf("Error: trie is null\n");
+		return;
+	}
+
+	if(!trie->root_node){
+		return;
+	}
+
+	trie_alg_dfs(trie->root_node, cb);
+	printf("\n");
+
+	return;
 }
 
